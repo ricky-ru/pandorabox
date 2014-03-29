@@ -673,6 +673,19 @@ endef
 
 $(eval $(call KernelPackage,usb-net-asix))
 
+define KernelPackage/usb-net-smsc75xx
+  TITLE:=Kernel module for USB-to-Ethernet Smsc75xx convertors
+  KCONFIG:=CONFIG_USB_NET_SMSC75XX
+  FILES:=$(LINUX_DIR)/drivers/$(USBNET_DIR)/smsc75xx.ko
+  AUTOLOAD:=$(call AutoLoad,61,smsc75xx)
+  $(call AddDepends/usb-net)
+endef
+
+define KernelPackage/usb-net-smsc75xx/description
+ Kernel module for USB-to-Ethernet Smsc75xx convertors
+endef
+
+$(eval $(call KernelPackage,usb-net-smsc75xx))
 
 define KernelPackage/usb-net-hso
   TITLE:=Kernel module for Option USB High Speed Mobile Devices
